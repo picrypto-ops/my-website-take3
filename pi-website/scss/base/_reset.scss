@@ -6,11 +6,27 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+}
+
 body {
     font-family: variables.$font-family-base;
     font-size: variables.$font-size-base;
     line-height: variables.$line-height-base;
     color: variables.$color-darkest;
     background-color: variables.$color-background;
+}
+
+.main-content {
+    section {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        padding: 4rem 0;
+    }
 }
 

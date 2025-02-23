@@ -99,5 +99,6 @@ return [
     'team_member_biography' => 'ביוגרפיה',
     'founder_role' => 'תפקיד המייסד',
     'member_not_found' => 'חבר הצוות לא נמצא',
+    'what_we_do' => 'מה אנחנו עושים',
 ];
 

@@ -23,7 +23,8 @@
             <p><?php echo $general['footer']['copyright']; ?></p>
         </div>
     </footer>
-    <script  type="module" src="js/pi_wave_bg.js"></script>
+    <script src="js/scroll-behavior.js"></script>
+    <script type="module" src="js/pi_wave_bg.js"></script>
 </body>
 </html>
 

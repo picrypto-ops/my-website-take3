@@ -103,5 +103,6 @@ return [
     'team_member_biography' => 'Biography',
     'founder_role' => 'Founder Role',
     'member_not_found' => 'Team Member Not Found',
+    'what_we_do' => 'What We Do',
 ];
 

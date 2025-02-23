@@ -15,7 +15,7 @@
                 <img src="images/logo.svg" alt="<?php echo $general['company_name']; ?>" height="40">
             </a>
             <nav>
-                <ul>
+                <ul class="main-menu">
                     <?php foreach ($menu as $item): ?>
                         <li>
                             <a href="<?php echo ltrim($item['url'], '/') . '.php'; ?>">
@@ -23,6 +23,8 @@
                             </a>
                         </li>
                     <?php endforeach; ?>
+                </ul>
+                <ul class="lang-selector">
                     <li>
                         <a href="?lang=<?php echo $lang === 'en' ? 'he' : 'en'; ?>">
                             <?php echo $lang === 'en' ? 'עברית' : 'English'; ?>

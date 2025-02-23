@@ -3,20 +3,85 @@
 
 .home {
     .hero {
+        min-height: 100vh;
         background-color: variables.$color-darker;
         color: white;
-        padding: 4rem 0;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        position: relative;
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            z-index: 1;
+
+            @media (max-width: 430px) {
+                flex-direction: column;
+                gap: 2rem;
+
+                .hero-text {
+                    width: 100%;
+                    padding-right: 0;
+                }
+
+                .hero-logo {
+                    width: 70%;
+                    
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+            }
         }
 
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .hero-text {
+            width: 50%;
+            text-align: left;
+            padding-right: 2rem;
+        }
+
+        .hero-logo {
+            width: 40%;
+            text-align: right;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: none;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 1rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            z-index: 1;
+            svg {
+                fill: white;
+                transition: transform 0.3s ease;
+            }
+
+            &:hover {
+                background: white;
+                svg {
+                    fill: variables.$color-darker;
+                    transform: translateY(5px);
+                }
+            }
+        }
+
+        #threeJsContainer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30vh;
+            z-index: 1000;
         }
     }
 
@@ -33,6 +98,100 @@
             justify-content: space-between;
             gap: 2rem;
         }
+    }
+
+    .sectors {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        .sector-card {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: variables.$color-darkest;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+
+        .product-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto 1fr;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+
+            .product-logo {
+                grid-column: 1;
+                grid-row: 1;
+                width: 80px;
+                height: auto;
+                object-fit: contain;
+            }
+
+            h3 {
+                grid-column: 2;
+                grid-row: 1;
+                margin: 0;
+                align-self: center;
+            }
+
+            p {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                margin: 0;
+                font-size: 0.9em;
+                color: variables.$color-medium;
+            }
+
+            .btn {
+                grid-column: 2;
+                grid-row: 3;
+                justify-self: end;
+                align-self: end;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                font-size: 0.9em;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover svg {
+                    transform: translateX(5px);
+                }
+            }
+        }
+    }
+
+    // Add smooth scroll behavior for sections
+    section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        scroll-snap-align: start;
     }
 }
 

@@ -4,12 +4,26 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #03045e;
   background-color: #caf0f8;
+}
+
+.main-content section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,23 +46,43 @@ header {
   background-color: #03045e;
   color: white;
   padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: -100px;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+header.visible {
+  top: 0;
 }
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+}
 header nav ul {
   display: flex;
   list-style-type: none;
+  gap: 2rem;
 }
-header nav ul li {
-  margin-left: 1rem;
+header nav ul.main-menu {
+  margin-right: auto;
+}
+header nav ul.lang-selector {
+  margin-left: 2rem;
 }
 header nav ul li a {
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
 }
 header nav ul li a:hover {
   color: #90e0ef;
@@ -143,19 +177,78 @@ footer .footer-section ul li a:hover {
 }
 
 .home .hero {
+  min-height: 100vh;
   background-color: #023e8a;
   color: white;
-  padding: 4rem 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
-.home .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.home .hero .hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  z-index: 1;
 }
-.home .hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
+@media (max-width: 430px) {
+  .home .hero .hero-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .home .hero .hero-content .hero-text {
+    width: 100%;
+    padding-right: 0;
+  }
+  .home .hero .hero-content .hero-logo {
+    width: 70%;
+  }
+  .home .hero .hero-content .hero-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+.home .hero .hero-text {
+  width: 50%;
+  text-align: left;
+  padding-right: 2rem;
+}
+.home .hero .hero-logo {
+  width: 40%;
+  text-align: right;
+}
+.home .hero .scroll-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.home .hero .scroll-btn svg {
+  fill: white;
+  transition: transform 0.3s ease;
+}
+.home .hero .scroll-btn:hover {
+  background: white;
+}
+.home .hero .scroll-btn:hover svg {
+  fill: #023e8a;
+  transform: translateY(5px);
+}
+.home .hero #threeJsContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  z-index: 1000;
 }
 .home .quick-links {
   padding: 4rem 0;
@@ -168,6 +261,87 @@ footer .footer-section ul li a:hover {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+}
+.home .sectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.home .sectors .sector-card {
+  flex: 1;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #03045e;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.home .sectors .sector-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.home .product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.home .product-list .product-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.home .product-list .product-card .product-logo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+.home .product-list .product-card h3 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  align-self: center;
+}
+.home .product-list .product-card p {
+  grid-column: 1/-1;
+  grid-row: 2;
+  margin: 0;
+  font-size: 0.9em;
+  color: #0096c7;
+}
+.home .product-list .product-card .btn {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9em;
+}
+.home .product-list .product-card .btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+.home .product-list .product-card .btn:hover svg {
+  transform: translateX(5px);
+}
+.home section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  scroll-snap-align: start;
 }
 
 .about-page .hero {
@@ -279,6 +453,12 @@ footer .footer-section ul li a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+}
+.team-page .team-group .team-members .team-member-card img {
+  width: 164px;
+  height: 169px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .bg-primary {
