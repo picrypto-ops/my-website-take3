@@ -1,0 +1,19 @@
+@use 'variables' as variables;
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: variables.$color-dark;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+

@@ -1,0 +1,32 @@
+@use '../base/variables' as variables;
+
+
+.product-page {
+    .hero {
+        background-color: variables.$color-darker;
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+
+        .product-logo {
+            max-width: 150px;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .product-description,
+    .product-founders {
+        padding: 4rem 0;
+    }
+
+    .product-founders {
+        background-color: variables.$color-lightest;
+
+        ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+    }
+}
+

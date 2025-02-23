@@ -1,0 +1,33 @@
+@use '../base/variables' as variables;
+
+header {
+    background-color: variables.$color-darkest;
+    color: white;
+    padding: 1rem 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style-type: none;
+
+        li {
+            margin-left: 1rem;
+
+            a {
+                color: white;
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: variables.$color-lightest;
+                }
+            }
+        }
+    }
+}
+

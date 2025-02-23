@@ -1,0 +1,19 @@
+@use '../base/variables' as *;
+
+.bg-primary {
+    background-color: $color-dark;
+    color: white;
+}
+
+.bg-secondary {
+    background-color: $color-lighter;
+}
+
+.text-primary {
+    color: $color-dark;
+}
+
+.text-secondary {
+    color: $color-medium;
+}
+
